@@ -10,7 +10,11 @@ const cors     = require('cors');
 const mongoose = require('mongoose');
 const app      = express();
 
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:3000', credentials: true }));
+app.use(cors({
+  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  credentials: true
+}));
+
 app.use(express.json());
 
 app.get('/api/health', (_, res) => res.json({ status:'ok', app:'DeLaxiY API v4' }));
@@ -22,12 +26,16 @@ app.use((err, req, res, next) => res.status(500).json({ message: err.message }))
 const PORT  = process.env.PORT     || 5000;
 const MONGO = process.env.MONGO_URI || 'mongodb://localhost:27017/delaxiy';
 
-mongoose.connect(MONGO)
-  .then(() => {
-    console.log('✅ MongoDB connected');
-    app.listen(PORT, () => console.log(`🚀 DeLaxiY API on http://localhost:${PORT}`));
-  })
-  .catch(e => { console.error('❌', e.message); process.exit(1); });
 app.get("/", (req, res) => {
   res.send("DeLaxiY Backend is Running 🚀");
 });
+
+mongoose.connect(MONGO)
+  .then(() => {
+    console.log('✅ MongoDB connected');
+    app.listen(PORT, () => console.log(`🚀 DeLaxiY API running on port ${PORT}`));
+  })
+  .catch(e => { 
+    console.error('❌', e.message); 
+    process.exit(1); 
+  });
