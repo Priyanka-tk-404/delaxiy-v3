@@ -27,3 +27,5 @@ export const dashApi = {
   get:  ()  => req('/dashboard'),
   save: d   => req('/dashboard', { method:'PUT', body:JSON.stringify(d) }),
 };
+
+console.log("API BASE:", process.env.REACT_APP_API_URL);
