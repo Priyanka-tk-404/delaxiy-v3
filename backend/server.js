@@ -28,3 +28,6 @@ mongoose.connect(MONGO)
     app.listen(PORT, () => console.log(`🚀 DeLaxiY API on http://localhost:${PORT}`));
   })
   .catch(e => { console.error('❌', e.message); process.exit(1); });
+app.get("/", (req, res) => {
+  res.send("DeLaxiY Backend is Running 🚀");
+});
