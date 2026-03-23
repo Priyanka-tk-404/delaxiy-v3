@@ -2,9 +2,11 @@
 ## Figma-Matched Design · MongoDB Compass · Complete MERN Stack
 
 ---
+## Demo Video
+
+https://github.com/user-attachments/assets/46578ed6-893f-4c27-b6fd-1cdeff6b1ee6
 
 ## 📁 Project Structure
-
 ```
 delaxiy-v3/
 ├── backend/
